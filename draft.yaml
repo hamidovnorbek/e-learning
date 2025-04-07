@@ -1,0 +1,33 @@
+models:
+  Course:
+    title: string:255
+    slug: string:255
+    description: text
+    image_path: string:255
+    intro_video: string nullable
+    price: integer nullable
+    is_published: boolean default:false
+    published_at: timestamp nullable
+    user_id: foreignIdFor(User)
+
+  Lesson:
+    course_id: foreignIdFor(Course)
+    title: string:255
+    description: text nullable
+    video_path: text nullable
+    duration: string
+    position: integer
+    is_free: boolean default:false
+    created_at: timestamp
+    updated_at: timestamp
+    
+
+  CourseUser:  # This is the pivot table
+    user_id: foreignIdFor(User)
+    course_id: foreignIdFor(Course)
+
+# controllers:
+#   Course:
+#     resource
+#   Lesson:
+#     resource

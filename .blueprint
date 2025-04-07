@@ -1,0 +1,15 @@
+created:
+    - database/factories/CourseFactory.php
+    - database/factories/LessonFactory.php
+    - database/factories/CourseUserFactory.php
+    - database/migrations/2025_04_05_144710_create_courses_table.php
+    - database/migrations/2025_04_05_144711_create_lessons_table.php
+    - database/migrations/2025_04_05_144712_create_course_users_table.php
+    - app/Models/Course.php
+    - app/Models/Lesson.php
+    - app/Models/CourseUser.php
+models:
+    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string nullable' }
+    Course: { title: 'string:255', slug: 'string:255', description: text, image_path: 'string:255', intro_video: 'string nullable', price: 'integer nullable', is_published: 'boolean default:false', published_at: 'timestamp nullable', user_id: foreignIdFor(User) }
+    Lesson: { course_id: foreignIdFor(Course), title: 'string:255', description: 'text nullable', video_path: 'text nullable', duration: string, position: integer, is_free: 'boolean default:false', created_at: timestamp, updated_at: timestamp }
+    CourseUser: { user_id: foreignIdFor(User), course_id: foreignIdFor(Course) }
