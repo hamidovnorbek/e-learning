@@ -32,6 +32,11 @@ class LessonResource extends Resource
                 Forms\Components\Textarea::make('description')
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('video_path')
+                    ->label('Upload Lesson')
+                    ->disk('public')
+                    ->directory('lessons') // stored in storage/app/videos
+                    ->acceptedFileTypes(['video/mp4', 'video/avi', 'video/mov'])
+                    ->maxSize(50000)
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('duration')
                     ->required(),

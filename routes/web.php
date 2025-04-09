@@ -12,7 +12,6 @@ Route::get('/', function () {
 });
 
 Route::get('/courses', [CoursesController::class, 'index']);
-
 Route::get('/courses/{slug}', [CoursesController::class, 'show'])->middleware('auth')->name('courses.show');
 
 

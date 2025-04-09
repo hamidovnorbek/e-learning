@@ -43,10 +43,13 @@ class CoursesController extends Controller
     public function show($slug)
     {
         $course = Course::where('slug', $slug)->first();
-        $lessons = Course::where('slug', $slug)->first()->lessons;
+        $lessons = $course->lessons()->paginate(1);
+
+//        dd($lessons);
+
 
         return view('course.show', [
-            'course' => $course,
+//            'course' => $course,
             'lessons' => $lessons
         ]);
     }
