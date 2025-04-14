@@ -3,14 +3,14 @@
         <div class="flex items-center space-x-2">
             <span class="text-xl font-bold">E-Learning</span>
         </div>
-        <ul class="flex space-x-6 text-gray-700 font-medium">
-            <li><a href="/" class="hover:text-indigo-600">Home</a></li>
-            <li><a href="/courses" class="hover:text-indigo-600">Courses</a></li>
-        </ul>
-        <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-6">
+            <a href="/" class="nav-item nav-link">Home</a>
+            <a href="/comment" class="nav-item nav-link">Forum</a>
+            <a href="/courses" class="nav-item nav-link">Courses</a>
+            <a href="/teachers" class="nav-item nav-link">Teachers</a>
             @guest()
-                <a href="/login" class="bg-indigo-900 text-white px-6 py-2 rounded-xl hover:bg-indigo-800 transition">Login</a>
-                <a href="/register" class="bg-indigo-900 text-white px-6 py-2 rounded-xl hover:bg-indigo-800 transition">Register</a>
+                <a href="/login" class="px-6 nav-item nav-link">Login</a>
+                <a href="/register" class=" px-6 nav-item nav-link">Register</a>
             @else
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf

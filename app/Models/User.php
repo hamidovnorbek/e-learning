@@ -6,6 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 //use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Filament\Models\Contracts\FilamentUser;
@@ -21,12 +23,18 @@ class User extends Authenticatable implements FilamentUser
      *
      * @var list<string>
      */
+
+    protected $casts = [
+        'is_mentor' => 'boolean',
+    ];
     protected $fillable = [
         'name',
         'email',
         'password',
-        'avatar'
+        'avatar',
+        'is_mentor'
     ];
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -53,12 +61,27 @@ class User extends Authenticatable implements FilamentUser
 
     public function courses(): belongsToMany
     {
-        return $this->belongsToMany(Course::class, 'course_users');
+        return $this->belongsToMany(Course::class, 'course_user');
     }
 
     public function canAccessPanel(Panel $panel): bool
     {
 //        dd(str_ends_with($this->email, '@admin.com'));
-        return str_ends_with($this->email, '@admin.com');
+        return str_ends_with($this->email, '@admin.com') or $this->is_mentor;
+    }
+
+    public function mentor(): HasOne
+    {
+        return $this->hasOne(Mentor::class);
+    }
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function courseComments(): HasMany
+    {
+        return $this->hasMany(CourseComment::class);
     }
 }

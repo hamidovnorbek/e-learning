@@ -33,7 +33,8 @@ class RegisterController extends Controller
                 'name' => $validated['name'],
                 'email' => $validated['email'],
                 'password' => Hash::make($validated['password']),
-                'avatar' => $validated['avatar']
+                'avatar' => $validated['avatar'],
+//                'is_mentor' => false,
         ]);
 
         Auth::login($student);

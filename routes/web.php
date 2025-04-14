@@ -1,18 +1,37 @@
 <?php
 
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\CourseCommentController;
 use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\LessonsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Models\Comment;
+use App\Models\Mentor;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () {return view('welcome'); });
 
+/*     Forum Comments           */
+Route::get('/comment', [CommentController::class, 'index']);
+Route::post('/comment', [CommentController::class, 'store'])->name('comment.store');
+
+/*      Public Course Pages    */
 Route::get('/courses', [CoursesController::class, 'index']);
-Route::get('/courses/{slug}', [CoursesController::class, 'show'])->middleware('auth')->name('courses.show');
+Route::get('/courses/{slug}', [CoursesController::class, 'show'])->name('courses.show');
+
+/*      CourseComments  */
+
+Route::post('/courses/{course}/comments', [CourseCommentController::class, 'store'])->name('courseComment.store');
+
+
+
+
+Route::post('/courses/{slug}/enroll', [CoursesController::class, 'enroll'])->middleware('auth')->name('courses.enroll');
+Route::get('/courses/{slug}/lessons', [LessonsController::class, 'index'])->middleware('auth')->name('lessons.show');;
 
 
 
@@ -22,6 +41,4 @@ Route::middleware('guest')->group( function (){
     Route::post('/register', [RegisterController::class, 'store'])->name('register');
     Route::get('/register', [RegisterController::class, 'create']);
 });
-
-
 Route::delete('/logout', [LoginController::class, 'destroy'])->name('logout')->middleware(['auth']);

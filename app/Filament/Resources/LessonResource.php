@@ -6,6 +6,7 @@ use App\Filament\Resources\LessonResource\Pages;
 use App\Filament\Resources\LessonResource\RelationManagers;
 use App\Models\Course;
 use App\Models\Lesson;
+use App\Models\Mentor;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -25,8 +26,15 @@ class LessonResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('course_id')
-                    ->options(Course::all()->pluck('title', 'id'))
-                    ->required(),
+                    ->options(function () {
+                        // Only get courses for the authenticated mentor
+                        if (auth()->user()->mentor){
+                            return Course::where('mentor_id', auth()->user()->mentor->id)
+                            ->pluck('title', 'id');
+                        }
+                    })
+                    ->required()
+                    ->searchable(),
                 Forms\Components\TextInput::make('title')
                     ->required(),
                 Forms\Components\Textarea::make('description')
@@ -48,11 +56,25 @@ class LessonResource extends Resource
             ]);
     }
 
+
+    public static function getEloquentQuery(): Builder
+    {
+        $query = parent::getEloquentQuery();
+        if (!str_ends_with(auth()->user()->email, '@admin.com')) {
+            $query->whereHas('course.mentor', function($q) {
+                $q->where('user_id', auth()->id());
+            });
+        }
+        return $query;
+    }
+
+
+
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('course_id')
+                Tables\Columns\TextColumn::make('course.title')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(),

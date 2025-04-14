@@ -3,55 +3,39 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Mentor;
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CoursesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-//        $courses = Course::where('created_at','<', now())
-//            ->with(['title', 'image_path', 'price', 'created_at'])
-//            ->get();
-
         $courses = Course::all();
         return view('course.index', ['courses' => $courses]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
     public function show($slug)
     {
         $course = Course::where('slug', $slug)->first();
-        $lessons = $course->lessons()->paginate(1);
+        $comments = $course->comments()
+            ->latest('published_at')
+            ->paginate(5);
 
-//        dd($lessons);
-
-
-        return view('course.show', [
-//            'course' => $course,
-            'lessons' => $lessons
+        return view('course.about', [
+            'course' => $course,
+            'comments' => $comments
         ]);
+
+
+    }
+
+    public function enroll($slug)
+    {
+        $course = Course::where('slug', $slug)->first();
+        auth()->user()->courses()->attach($course->id);
+        return redirect('/courses');
+
     }
 
     /**

@@ -1,10 +1,5 @@
 @props(['lessons'])
 <x-app-layout>
-{{--    <div class="mt-6">--}}
-{{--        {{ $lessons->links('vendor.pagination.tailwind') }}--}}
-{{--    </div>--}}
-
-
     @foreach($lessons as $lesson)
         <div class="flex justify-center items-center my-5">
             <div>
@@ -44,5 +39,4 @@
             <p class="mt-2">{{ $lesson->description }}</p>
         </div>
     @endforeach
-
 </x-app-layout>
