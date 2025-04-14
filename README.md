@@ -70,15 +70,16 @@ php artisan make:filament-user
 ```
 
 <h2> PUBLIC PAGES </h2>
-![image](https://github.com/user-attachments/assets/b10c49bd-af60-40e8-8ed2-7f57fe9f8730)
 
 HomePage: ![image](https://github.com/user-attachments/assets/f7adeb5e-625a-441c-8aef-37f6639684e2)
 ForumPage: ![image](https://github.com/user-attachments/assets/af24cb1d-cbdc-4428-9550-2cd0736d4b52)
 CoursesPage: ![image](https://github.com/user-attachments/assets/385fbeaa-7e29-4ae0-af32-03347c50a452)
 and soo on (<mark>login, lessons, etc pages</mark>)
-<br>
-<h2>Admin Panel Pages</h2>
-UserControllerPage: ![image](https://github.com/user-attachments/assets/0c2b2c70-8a6d-4a7f-a6eb-c867584b1993)
-and soo on. (<mark>courses, lessons, mentors, and each mentor admin panel pages</mark>)
+<br><br>
 
+<h2>Admin Panel Pages</h2>
+UserControllerPage: 
+
+![image](https://github.com/user-attachments/assets/30793adf-cfda-47bc-ac25-99d443c6eda9)
+and soo on. (<mark>courses, lessons, mentors, and each mentor admin panel pages</mark>)
 
