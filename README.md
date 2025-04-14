@@ -30,6 +30,9 @@ A modern web-based E-Learning platform built with **Laravel**, designed to simpl
 - Manage video lessons
 - Access full Filament admin dashboard
 
+### Mentors
+- Accessable Admin panel only with (CRUD on Courses and Lessons)
+
 ### 👨‍🎓 Student
 - Register and log in
 - View available lessons
