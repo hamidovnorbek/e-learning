@@ -12,29 +12,23 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 
-
+/*      Public Pages    */
 Route::get('/', function () {return view('welcome'); });
-
-/*     Forum Comments           */
-Route::get('/comment', [CommentController::class, 'index']);
-Route::post('/comment', [CommentController::class, 'store'])->name('comment.store');
-
-/*      Public Course Pages    */
 Route::get('/courses', [CoursesController::class, 'index']);
 Route::get('/courses/{slug}', [CoursesController::class, 'show'])->name('courses.show');
+Route::middleware('auth')->group( function (){
 
-/*      CourseComments  */
+    /*      Representing the lessons of each courses with enrolling session      */
+    Route::post('/courses/{slug}/enroll', [CoursesController::class, 'enroll'])->name('courses.enroll');
+    Route::get('/courses/{slug}/lessons', [LessonsController::class, 'index'])->name('lessons.show');
 
-Route::post('/courses/{course}/comments', [CourseCommentController::class, 'store'])->name('courseComment.store');
+    /*      CourseComments  */
+    Route::post('/courses/{course}/comments', [CourseCommentController::class, 'store'])->name('courseComment.store');
 
-
-
-
-Route::post('/courses/{slug}/enroll', [CoursesController::class, 'enroll'])->middleware('auth')->name('courses.enroll');
-Route::get('/courses/{slug}/lessons', [LessonsController::class, 'index'])->middleware('auth')->name('lessons.show');;
-
-
-
+    /*     Forum Comments           */
+    Route::get('/comment', [CommentController::class, 'index']);
+    Route::post('/comment', [CommentController::class, 'store'])->name('comment.store');
+});
 Route::middleware('guest')->group( function (){
     Route::get('/login', [LoginController::class, 'create']);
     Route::post('/login', [LoginController::class, 'store'])->name('login');
