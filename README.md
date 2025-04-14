@@ -6,7 +6,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
-# 📚 <h1>E-Learning Platform</h1>
+📚 <h1>E-Learning Platform</h1>
 
 A modern web-based E-Learning platform built with **Laravel**, designed to simplify student management and video lesson access. This project features a secure admin panel powered by **Filament** and a clean, minimal frontend using **Tailwind CSS**.
 
@@ -67,3 +67,8 @@ php artisan migrate
 ```bash
 php artisan make:filament-user
 ```
+
+<h2> PUBLIC PAGES </h2>
+![image](https://github.com/user-attachments/assets/b10c49bd-af60-40e8-8ed2-7f57fe9f8730)
+
+
