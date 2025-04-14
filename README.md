@@ -6,13 +6,13 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
-# 📚 E-Learning Platform
+# 📚 <h1>E-Learning Platform</h1>
 
 A modern web-based E-Learning platform built with **Laravel**, designed to simplify student management and video lesson access. This project features a secure admin panel powered by **Filament** and a clean, minimal frontend using **Tailwind CSS**.
 
 ---
 
-## 🔧 Technologies Used
+## 🔧 <h2>Technologies Used</h2>
 
 - ⚙️ **Laravel** – Powerful PHP framework
 - 🎛️ **FilamentPHP** – Elegant admin dashboard
@@ -22,7 +22,7 @@ A modern web-based E-Learning platform built with **Laravel**, designed to simpl
 
 ---
 
-## 👥 User Roles
+## 👥 <h2>User Roles</h2>
 
 ### 🧑‍🏫 Admin
 - View, edit, and delete students
@@ -36,7 +36,7 @@ A modern web-based E-Learning platform built with **Laravel**, designed to simpl
 
 ---
 
-## 🚀 Getting Started
+## 🚀 <h2>Getting Started</h2>
 
 Follow these steps to set up the project locally.
 
@@ -44,3 +44,26 @@ Follow these steps to set up the project locally.
 ```bash
 git clone https://github.com/your-username/e-learning.git
 cd e-learning
+```
+### 2. Install dependencies
+```bash
+composer install
+```
+### 3. Copy ".env" and generate app key
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+### 4. Set up database (using SQLite for simplicity)
+```bash
+touch database/database.sqlite
+```
+### 5. Run migrations
+```bash
+php artisan migrate
+```
+### 6. Create a admin (Filament) only with  " @admin.com "
+```bash
+php artisan make:filament-user
+```
