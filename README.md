@@ -5,62 +5,84 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+
 </p>
+📚 <h1>E-Learning Platform</h1>
 
-## About Laravel
+A modern web-based E-Learning platform built with **Laravel**, designed to simplify student management and video lesson access. This project features a secure admin panel powered by **Filament** and a clean, minimal frontend using **Tailwind CSS**.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🔧 <h2>Technologies Used</h2>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- ⚙️ **Laravel** – Powerful PHP framework
+- 🎛️ **FilamentPHP** – Elegant admin dashboard
+- 🎨 **Tailwind CSS** – Utility-first CSS framework
+- 🛢️ **SQLite** – Lightweight database for development
+- 💻 **PHP** – Backend language
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 👥 <h2>User Roles</h2>
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 🧑‍🏫 Admin
+- View, edit, and delete students
+- Manage video lessons
+- Access full Filament admin dashboard
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Mentors
+- Accessable Admin panel only with (CRUD on Courses and Lessons)
 
-## Laravel Sponsors
+### 👨‍🎓 Student
+- Register and log in
+- View available lessons
+- Cannot access admin panel
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## 🚀 <h2>Getting Started</h2>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Follow these steps to set up the project locally.
 
-## Contributing
+### 1. Clone the repository
+```bash
+git clone https://github.com/your-username/e-learning.git
+cd e-learning
+```
+### 2. Install dependencies
+```bash
+composer install
+```
+### 3. Copy ".env" and generate app key
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 4. Set up database (using SQLite for simplicity)
+```bash
+touch database/database.sqlite
+```
+### 5. Run migrations
+```bash
+php artisan migrate
+```
+### 6. Create a admin (Filament) only with  " @admin.com "
+```bash
+php artisan make:filament-user
+```
 
-## Code of Conduct
+<h2> PUBLIC PAGES </h2>
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+HomePage: ![image](https://github.com/user-attachments/assets/f7adeb5e-625a-441c-8aef-37f6639684e2)
+ForumPage: ![image](https://github.com/user-attachments/assets/af24cb1d-cbdc-4428-9550-2cd0736d4b52)
+CoursesPage: ![image](https://github.com/user-attachments/assets/385fbeaa-7e29-4ae0-af32-03347c50a452)
+and soo on (<mark>login, lessons, etc pages</mark>)
+<br><br>
 
-## Security Vulnerabilities
+<h2>Admin Panel Pages</h2>
+UserControllerPage: 
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+![image](https://github.com/user-attachments/assets/30793adf-cfda-47bc-ac25-99d443c6eda9)
+and soo on. (<mark>courses, lessons, mentors, and each mentor admin panel pages</mark>)
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
