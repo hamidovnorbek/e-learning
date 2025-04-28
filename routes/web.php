@@ -35,4 +35,6 @@ Route::middleware('guest')->group( function (){
     Route::post('/register', [RegisterController::class, 'store'])->name('register');
     Route::get('/register', [RegisterController::class, 'create']);
 });
+
+/* default */
 Route::delete('/logout', [LoginController::class, 'destroy'])->name('logout')->middleware(['auth']);
