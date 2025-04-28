@@ -25,9 +25,7 @@
                                         <img class="rounded-circle" src="{{ asset('storage/' . Auth::user()->avatar) }}" width="40">
                                         <textarea class="form-control ml-1 shadow-none textarea" name="body" placeholder="Write a comment..."></textarea>
                                     </div>
-                                    <div class="mt-2 text-right">
-                                        <button type="submit" class="btn btn-primary btn-sm shadow-none">Post comment</button>
-                                    </div>
+                                    <x-comment-submit-btn />
                                 </div>
                             </form>
                             @if ($errors->any())

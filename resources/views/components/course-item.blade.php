@@ -13,25 +13,6 @@
                 <div class="d-flex justify-content-between">
                     <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
                     <h5 class="m-0">${{$course->price}}</h5>
-{{--                    @auth--}}
-{{--                        @php--}}
-{{--                            $isEnrolled = auth()->user()->courses->contains($course->id)--}}
-{{--                        @endphp--}}
-
-{{--                        @if($isEnrolled)--}}
-{{--                            <a href="{{ route('courses.show', $course->slug) }}" class="nav-item nav-link">Enter</a>--}}
-{{--                        @else--}}
-{{--                            <form action="{{ route('courses.enroll', $course->slug) }}" method="POST" class="d-inline">--}}
-{{--                                @csrf--}}
-{{--                                <button type="submit" class="nav-link border-0 bg-transparent p-0" style="cursor: pointer;">--}}
-{{--                                    Enroll--}}
-{{--                                </button>--}}
-{{--                            </form>--}}
-{{--                        @endif--}}
-{{--                    @else--}}
-{{--                        <a href="{{ route('login') }}" class="nav-item nav-link">Login to Enroll</a>--}}
-{{--                        @endauth--}}
-{{--                    </form/>--}}
                 </div>
             </div>
         </div>
