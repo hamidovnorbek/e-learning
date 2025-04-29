@@ -1,10 +1,11 @@
 @props(['lessons'])
 <x-app-layout>
+
     @foreach($lessons as $lesson)
         <div class="flex justify-center items-center my-5">
             <div>
                 @if ($lessons->hasPages())
-                    <nav role="navigation" aria-label="Pagination Navigation" class="flex items-center space-x-1">
+                    <nav role="navigation" aria-label="Pagination Navigation" class="flex w-full items-center space-x-1">
                         {{-- Previous Page Link --}}
                         @if ($lessons->onFirstPage())
                             <span class="px-3 py-1 text-sm text-gray-400 bg-gray-100 rounded-md">Previous</span>
@@ -29,14 +30,16 @@
                         @endif
                     </nav>
                 @endif
+                <br>
                 <h1 class="text-3xl font-bold text-center  mt-3 mb-3">{{ $lesson->title }}</h1>
 
-            <video width="640" height="360" class="mx-auto rounded-lg" controls>
-                <source src="{{ Storage::url($lesson->video_path) }}" type="video/mp4">
-                Brauzeringiz videoni qo‘llab-quvvatlamaydi.
-            </video>
-
-            <p class="mt-2">{{ $lesson->description }}</p>
-        </div>
+                <video width="640" height="360" class="mx-auto rounded-lg" controls>
+                    <source src="{{ Storage::url($lesson->video_path) }}" type="video/mp4">
+                    Brauzeringiz videoni qo‘llab-quvvatlamaydi.
+                </video>
+                    <hr>
+                <p class="mt-2 max-w-xl text-justify mx-auto border border-gray-400 rounded-2xl p-4">{{ $lesson->description }}</p>
+            </div>
     @endforeach
+
 </x-app-layout>
